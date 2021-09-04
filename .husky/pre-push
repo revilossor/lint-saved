@@ -3,5 +3,5 @@
 
 set -e
 
-npx ts-standard --fix
-npm test
+npm run lint
+npm run test
