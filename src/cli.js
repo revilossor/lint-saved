@@ -1,13 +1,35 @@
 #!/usr/bin/env node
 
-const getOptions = require('./getOptions')
+console.log('todo...')
 
-const options = getOptions()
+// module for getting options
+// - use something like getoopts
+// - cooldown
+// - verbose
 
-console.dir({ options })
+// module for finding the package.json
+// - handles being installed globally or in package
+// - throws if none found in cwd or correct path from install dir...
+// - returns required json
 
-// work out where package.json is - cwd i guess... this will be global only?
-// work out the extention mapping map
-// work out the extentions to watch for based on extention map
-// start nodemon
-// do the exec line in monmap
+// module for working out extention map
+// - adds commands from package.json lint-staged
+// - adds commands from package.json lint-saved
+// - has helper for getting expentions
+
+// module for caching processed files
+// - basically a map, but has is overridden to also chech expiry
+
+// module for starting nodemon
+// - only watches map ententions
+// - has restart handler
+// - when invoked... for each file...
+//    - checks cache for file
+//    - if bad, does nothing
+//    - if good
+//        - logs start
+//        - sets cache
+//        - matches every rule pattern against filename
+//            - if match, executes
+//            - if not, does nothing
+//        - logs end
