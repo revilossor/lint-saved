@@ -8,6 +8,7 @@
   },
   "license": "ISC",
   "author": "oliver.ross@hotmail.com",
+  "main": "src/disabled",
   "bin": {
     "lint-saved": "./src/cli.js"
   },
@@ -40,5 +41,10 @@
   "engines": {
     "node": ">=16.8.0",
     "npm": ">=7.21.0"
+  },
+  "standard": {
+    "env": [
+      "jest"
+    ]
   }
 }
