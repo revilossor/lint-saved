@@ -2,16 +2,6 @@
 
 console.log('todo...')
 
-// module for getting options
-// - use something like getoopts
-// - cooldown
-// - verbose
-
-// module for finding the package.json
-// - handles being installed globally or in package
-// - throws if none found in cwd or correct path from install dir...
-// - returns required json
-
 // module for working out extention map
 // - adds commands from package.json lint-staged
 // - adds commands from package.json lint-saved
