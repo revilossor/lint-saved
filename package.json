@@ -2,6 +2,10 @@
   "name": "@revilossor/lint-saved",
   "version": "1.0.0",
   "description": "run lint staged actions against saved files",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/revilossor/lint-saved.git"
+  },
   "license": "ISC",
   "author": "oliver.ross@hotmail.com",
   "bin": {
