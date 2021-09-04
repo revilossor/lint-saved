@@ -1,0 +1,36 @@
+{
+  "name": "@revilossor/lint-saved",
+  "version": "1.0.0",
+  "description": "run lint staged actions against saved files",
+  "license": "ISC",
+  "author": "oliver.ross@hotmail.com",
+  "bin": {
+    "lint-saved": "./src/cli.js"
+  },
+  "files": [
+    "src/**/*.js"
+  ],
+  "scripts": {
+    "test": "jest --passWithNoTests",
+    "lint": "standard --fix",
+    "setup-git-hooks": "husky install"
+  },
+  "lint-staged": {
+    "*.js": "standard --fix",
+    "package.json": "sort-package-json",
+    "*.json": "jsonlint -qc",
+    "*.md": "markdownlint --fix"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "husky": "^7.0.2",
+    "jest": "^27.1.0",
+    "jsonlint": "^1.6.3",
+    "lint-staged": "^11.1.2",
+    "markdownlint-cli": "^0.28.1",
+    "sort-package-json": "^1.50.0",
+    "standard": "^16.0.3"
+  }
+}
