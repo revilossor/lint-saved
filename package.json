@@ -26,7 +26,9 @@
     "*.json": "jsonlint -qc",
     "*.md": "markdownlint --fix"
   },
-  "dependencies": {},
+  "dependencies": {
+    "nodemon": "^2.0.12"
+  },
   "devDependencies": {
     "@commitlint/cli": "^13.1.0",
     "@commitlint/config-conventional": "^13.1.0",

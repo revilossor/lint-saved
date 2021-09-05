@@ -2,11 +2,7 @@
 
 console.log('todo...')
 
-// module for starting nodemon
-// - watches everything....
-// - invokes restart handler for each file
-
-// module for restart handler
+// module for restart handler - needs action map, cache
 // - when invoked
 //    - checks cache for file
 //    - if bad, does nothing
@@ -14,6 +10,8 @@ console.log('todo...')
 //        - logs start
 //        - sets cache
 //        - matches every rule pattern against filename
-//            - if match, executes
+//            - if match, executes all
 //            - if not, does nothing
 //        - logs end
+
+// main that inits action map, cache, handler and watches - invoked from here
