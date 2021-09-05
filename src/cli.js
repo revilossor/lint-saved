@@ -2,9 +2,6 @@
 
 console.log('todo...')
 
-// module for caching processed files
-// - basically a map, but has is overridden to also chech expiry
-
 // module for starting nodemon
 // - watches everything....
 // - invokes restart handler for each file
