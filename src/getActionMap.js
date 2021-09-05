@@ -15,7 +15,5 @@ module.exports = async () => {
   const map = new Map()
   assignFromJsonKey(map, pkg, 'lint-staged')
   assignFromJsonKey(map, pkg, 'lint-saved')
-  return {
-    map
-  }
+  return map
 }

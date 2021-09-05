@@ -27,6 +27,7 @@
     "*.md": "markdownlint --fix"
   },
   "dependencies": {
+    "micromatch": "^4.0.4",
     "nodemon": "^2.0.12"
   },
   "devDependencies": {

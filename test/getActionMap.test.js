@@ -15,7 +15,7 @@ describe('When I get an action map', () => {
           'some-key': 'some-value'
         }
       })
-      const { map } = await getActionMap()
+      const map = await getActionMap()
       expect([...map.keys()]).toEqual(['some-key'])
       expect([...map.values()]).toEqual([['some-value']])
     })
@@ -26,7 +26,7 @@ describe('When I get an action map', () => {
           'some-array-key': ['some-other-value']
         }
       })
-      const { map } = await getActionMap()
+      const map = await getActionMap()
       expect([...map.keys()]).toEqual(['some-string-key', 'some-array-key'])
       expect([...map.values()]).toEqual([['some-value'], ['some-other-value']])
     })
@@ -38,7 +38,7 @@ describe('When I get an action map', () => {
           'some-other-key': 'some-other-value'
         }
       })
-      const { map } = await getActionMap()
+      const map = await getActionMap()
       expect([...map.keys()]).toEqual(['some-other-key'])
       expect([...map.values()]).toEqual([['some-other-value']])
     })
@@ -55,7 +55,7 @@ describe('When I get an action map', () => {
           three: 'value-three'
         }
       })
-      const { map } = await getActionMap()
+      const map = await getActionMap()
       expect([...map.keys()]).toEqual(['one', 'two', 'three'])
       expect([...map.values()]).toEqual([['value-one'], ['value-two-one', 'duplicate', 'value-two-two'], ['value-three']])
     })
