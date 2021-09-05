@@ -1,6 +1,7 @@
 const getFileName = file => file.split('/').pop()
 const { isMatch } = require('micromatch')
 const { relative } = require('path')
+const execute = require('./execute')
 
 module.exports = (actionMap, cache) => async file => {
   if (cache.has(file)) { return }
@@ -11,11 +12,13 @@ module.exports = (actionMap, cache) => async file => {
   cache.set(file)
 
   const filename = getFileName(file)
-  actionMap.forEach((actions, pattern) => {
+  for (const [pattern, commands] of actionMap) {
     if (isMatch(filename, pattern)) {
-      // exec each command
+      for (const command of commands) {
+        await execute(command, file)
+      }
     }
-  })
+  }
 
   console.info(`[lint-saved] ✅ "${rel}"`)
 }

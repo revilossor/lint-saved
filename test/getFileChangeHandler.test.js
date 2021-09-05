@@ -1,17 +1,8 @@
-// module for restart handler - needs action map, cache
-// - when invoked
-//    - if bad, does nothing
-//    - if good
-//        - logs start
-//        - sets cache
-//        - matches every rule pattern against filename
-//            - if match, executes all
-//            - if not, does nothing
-//        - logs end
-
 const getFileChangeHandler = require('../src/getFileChangeHandler')
+const execute = require('../src/execute')
 const micromatch = require('micromatch')
 
+jest.mock('../src/execute')
 jest.mock('micromatch')
 
 const cache = {
@@ -39,15 +30,20 @@ describe('Given a file change handler, initialised with an action map and a cach
         await handler(file)
         expect(console.info).not.toHaveBeenCalled()
         expect(cache.set).not.toHaveBeenCalled()
+        expect(micromatch.isMatch).not.toHaveBeenCalled()
+        expect(execute).not.toHaveBeenCalled()
       })
     })
 
     describe('When the file is not cached', () => {
       beforeEach(async () => {
         cache.has.mockReturnValueOnce(false)
+        micromatch.isMatch
+          .mockReturnValueOnce(false)
+          .mockReturnValueOnce(true)
         const actionMap = new Map()
         actionMap.set('somepattern', ['somevalue'])
-        actionMap.set('someotherpattern', ['somevalue'])
+        actionMap.set('someotherpattern', ['first command', 'second command'])
         const handler = getFileChangeHandler(actionMap, cache)
         await handler(file)
       })
@@ -65,8 +61,10 @@ describe('Given a file change handler, initialised with an action map and a cach
         expect(micromatch.isMatch).toHaveBeenCalledWith('filename', 'someotherpattern')
       })
 
-      // TODO when there is a match
-      //    command executed with filename at the end.
+      it('And all commands from all matching actions are executed with the file appended', () => {
+        expect(execute).toHaveBeenCalledWith('first command', file)
+        expect(execute).toHaveBeenCalledWith('second command', file)
+      })
 
       it('Then an informative message about processing complete is logged', () => {
         expect(console.info).toHaveBeenCalledWith('[lint-saved] ✅ "path/filename"')
