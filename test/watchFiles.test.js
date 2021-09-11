@@ -3,11 +3,11 @@ const watchFiles = require('../src/watchFiles')
 
 jest.mock('nodemon')
 
-const on = jest.fn()
+const on = jest.fn(() => ({ on }))
 
-nodemon.mockReturnValue(({
+nodemon.mockReturnValue({
   on
-}))
+})
 
 const callback = jest.fn()
 
@@ -28,8 +28,11 @@ describe('When I watch files', () => {
 describe('When a restart event is dispatched', () => {
   it('Then the passed callback is invoked once for each changed file', async () => {
     let handler
-    on.mockImplementationOnce((_, cb) => {
-      handler = cb
+    on.mockImplementation((event, cb) => {
+      if (event === 'restart') {
+        handler = cb
+      }
+      return { on }
     })
     watchFiles(callback)
     expect(handler).toBeDefined()

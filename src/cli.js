@@ -1,5 +1,15 @@
 #!/usr/bin/env node
 
-console.log('todo...')
+const start = require('./main')
+const exitHandler = code => {
+  process.exit(0)
+}
 
-// main that inits action map, cache, handler and watches - invoked from here
+start()
+  .catch(error => {
+    console.error(error)
+    process.exit(1)
+  })
+
+process.on('exit', exitHandler)
+process.on('SIGINT', exitHandler)
