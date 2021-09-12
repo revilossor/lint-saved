@@ -1,6 +1,14 @@
 # Lint Saved
 
+This package will watch files in a node project, and run commands against files when they are saved.
+
+Install it with ```npm i @revilossor/lint-saved -g```, then run it next to your package.json.
+
+It'll use the config from lint-staged, and run the appropriate commands against changed files.
+
 ## Development
+
+You can link the library in the global npm cache ( for this version of npm ) with ```npm link```, then run ```lint-saved``` in a directory with a package.json.
 
 __NOTE__ please ensure you enable the git hooks by running ```npm run setup-git-hooks```!
 
