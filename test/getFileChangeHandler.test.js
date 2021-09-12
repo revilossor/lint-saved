@@ -48,11 +48,7 @@ describe('Given a file change handler, initialised with an action map and a cach
         await handler(file)
       })
 
-      it('Then a message about the file change is logged, with a relative path', () => {
-        expect(console.info).toHaveBeenCalledWith('[lint-saved] 👀 "path/filename"') // TODO timestamp?
-      })
-
-      it('And the item is set in the cache', () => {
+      it('Then the item is set in the cache', () => {
         expect(cache.set).toHaveBeenCalledWith(file)
       })
 
@@ -64,10 +60,6 @@ describe('Given a file change handler, initialised with an action map and a cach
       it('And all commands from all matching actions are executed with the file appended', () => {
         expect(execute).toHaveBeenCalledWith('first command', file)
         expect(execute).toHaveBeenCalledWith('second command', file)
-      })
-
-      it('Then an informative message about processing complete is logged', () => {
-        expect(console.info).toHaveBeenCalledWith('[lint-saved] ✅ "path/filename"')
       })
     })
   })

@@ -13,7 +13,7 @@ module.exports = async (command, file) => {
       .on('error', err => {
         reject(err)
       })
-    process.stdout.on('data', data => { console.log(`[lint-saved] ${data.toString()}`) })
-    process.stderr.on('data', data => { console.error(`[lint-saved] ❌ ${data.toString()}`) })
+    process.stdout.on('data', data => { console.log(data.toString()) })
+    process.stderr.on('data', data => { console.error(data.toString()) })
   })
 }

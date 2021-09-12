@@ -1,14 +1,10 @@
 const getFileName = file => file.split('/').pop()
 const { isMatch } = require('micromatch')
-const { relative } = require('path')
 const execute = require('./execute')
+const { relative } = require('path')
 
 module.exports = (map, cache) => async file => {
   if (cache.has(file)) { return }
-
-  const rel = relative(process.cwd(), file)
-
-  console.info(`[lint-saved] 👀 "${rel}"`)
 
   cache.set(file)
 
@@ -16,11 +12,11 @@ module.exports = (map, cache) => async file => {
   for (const [pattern, commands] of map) {
     if (isMatch(filename, pattern)) {
       for (const command of commands) {
-        console.info(`[lint-saved] 🏃 "${command} ${file}"`)
+        console.info(`[lint-saved] 🏃 ${command} ${file}`)
         await execute(command, file)
       }
     }
   }
-
-  console.info(`[lint-saved] ✅ "${rel}"`)
+  const rel = relative(process.cwd(), file)
+  console.info(`[lint-saved] 🏁 ${rel}`) // TODO test this
 }

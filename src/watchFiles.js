@@ -11,7 +11,7 @@ const ignore = [
   '**/assets/*'
 ]
 
-// TODO need to be able to specify ignores and ententions, and have sensible defaults...
+// TODO need to be able to specify ignores and ententions, and have sensible defaults
 
 let running = false
 
@@ -23,7 +23,7 @@ module.exports = onFileChange => {
   }).on('start', () => {
     if (!running) { // TODO test this
       running = true
-      console.log('[lint-saved] watching for file changes...')
+      console.log(`[lint-saved] 👀 ${process.cwd()}`)
     }
   }).on('restart', async files => {
     const list = [...files]
