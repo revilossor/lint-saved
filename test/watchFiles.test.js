@@ -17,7 +17,7 @@ describe('When I watch files', () => {
     watchFiles(callback)
     expect(nodemon).toHaveBeenCalledWith({
       exec: ':',
-      ext: 'md,json,js,ts,jsx,tsx',
+      ext: 'md,json,js,ts,jsx,tsx,svg',
       ignore: expect.any(Array)
     })
   })

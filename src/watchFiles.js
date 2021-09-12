@@ -1,6 +1,6 @@
 const nodemon = require('nodemon')
 
-const ext = 'md,json,js,ts,jsx,tsx'
+const ext = 'md,json,js,ts,jsx,tsx,svg'
 const ignore = [
   '**/build/*',
   '**/.git/*',
