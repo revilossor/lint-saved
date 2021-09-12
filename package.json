@@ -1,6 +1,6 @@
 {
   "name": "lint-saved",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "run lint staged actions against saved files.",
   "repository": {
     "type": "git",
