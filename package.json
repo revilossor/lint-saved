@@ -1,5 +1,5 @@
 {
-  "name": "@revilossor/lint-saved",
+  "name": "lint-saved",
   "version": "1.0.0",
   "description": "run lint staged actions against saved files.",
   "repository": {
