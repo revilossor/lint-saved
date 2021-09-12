@@ -10,13 +10,15 @@ nodemon.mockReturnValue({
 })
 
 const callback = jest.fn()
+console.info = jest.fn()
 
 describe('When I watch files', () => {
   it('Then nodemon is started with the expected options', () => {
     watchFiles(callback)
     expect(nodemon).toHaveBeenCalledWith({
       exec: ':',
-      ext: 'md,json,js,ts,jsx,tsx'
+      ext: 'md,json,js,ts,jsx,tsx',
+      ignore: expect.any(Array)
     })
   })
   it('And a restart handler is attached', () => {

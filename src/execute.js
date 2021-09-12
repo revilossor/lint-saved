@@ -3,7 +3,7 @@ const { spawn } = require('child_process')
 module.exports = async (command, file) => {
   return new Promise((resolve, reject) => {
     const parts = command.split(' ')
-    if (parts[0] !== 'npm') {
+    if (parts[0] !== 'npm') { // TODO test this.... dont do in here...
       parts.unshift('npx')
     }
     const process = spawn(parts.shift(), [...parts, file])
